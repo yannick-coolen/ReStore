@@ -1,8 +1,8 @@
-import { Product } from "../../app/models/product";
+import { Product } from '../../app/models/product';
 
 // styling
-import { Grid } from "@mui/material";
-import ProductCard from "./ProductCard";
+import { Grid } from '@mui/material';
+import ProductCard from './ProductCard';
 
 interface Props {
   products: Product[];
