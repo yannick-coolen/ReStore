@@ -11,7 +11,7 @@ import {
   Typography,
 } from '@mui/material';
 import { Link, NavLink } from 'react-router-dom';
-import { useStoreContext } from '../context/StoreContext';
+import { useAppSelector } from '../store/configureStore';
 
 const midLinks = [
   { title: 'catalog', path: '/catalog' },
@@ -42,7 +42,7 @@ interface Props {
 }
 
 export default function Header({ darkMode, handleThemeChange }: Props) {
-  const { basket } = useStoreContext();
+  const { basket } = useAppSelector((state) => state.basket);
 
   const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
 
@@ -64,9 +64,11 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
         <Box display={'flex'} alignItems={'center'}>
           <List sx={{ display: 'flex' }}>
             {midLinks.map(({ title, path }) => (
-              <ListItem key={path} component={NavLink} to={path} sx={navStyles}>
-                {title.toUpperCase()}
-              </ListItem>
+              <li key={path}>
+                <ListItem component={NavLink} to={path} sx={navStyles}>
+                  {title.toUpperCase()}
+                </ListItem>
+              </li>
             ))}
           </List>
         </Box>
@@ -85,9 +87,11 @@ export default function Header({ darkMode, handleThemeChange }: Props) {
           </IconButton>
           <List sx={{ display: 'flex' }}>
             {rightLinks.map(({ title, path }) => (
-              <ListItem key={path} component={NavLink} to={path} sx={navStyles}>
-                {title.toUpperCase()}
-              </ListItem>
+              <li key={path}>
+                <ListItem component={NavLink} to={path} sx={navStyles}>
+                  {title.toUpperCase()}
+                </ListItem>
+              </li>
             ))}
           </List>
         </Box>
