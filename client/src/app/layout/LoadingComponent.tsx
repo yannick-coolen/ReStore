@@ -4,7 +4,9 @@ interface Props {
   message?: string;
 }
 
-export default function LoadingComponent({ message = 'Loading...' }: Props) {
+export default function LoadingComponent({
+  message = 'Loading...',
+}: Readonly<Props>) {
   return (
     <Backdrop open={true} invisible={true}>
       <Box

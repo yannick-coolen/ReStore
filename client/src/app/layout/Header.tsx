@@ -41,7 +41,10 @@ interface Props {
   handleThemeChange: () => void;
 }
 
-export default function Header({ darkMode, handleThemeChange }: Props) {
+export default function Header({
+  darkMode,
+  handleThemeChange,
+}: Readonly<Props>) {
   const { basket } = useAppSelector((state) => state.basket);
 
   const itemCount = basket?.items.reduce((sum, item) => sum + item.quantity, 0);
